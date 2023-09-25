@@ -47,6 +47,14 @@ let ConvertioService = class ConvertioService {
         const response = await this.httpService.axiosRef.get(url, {});
         return response.data;
     }
+    async balance() {
+        const apiKey = await this.parametrosService.findOneByName('apikeyconvertio');
+        const url = this.configSerivce.convertio.url + '/balance';
+        const response = await this.httpService.axiosRef.post(url, {
+            apikey: apiKey,
+        });
+        return response.data;
+    }
 };
 ConvertioService = __decorate([
     (0, common_1.Injectable)(),

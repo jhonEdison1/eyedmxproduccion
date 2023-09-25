@@ -607,6 +607,11 @@ let ManillasService = class ManillasService {
         };
     }
     async aceptarVariasManillas(ids) {
+        const total = ids.length;
+        const minutos_convertio = await this.convertioService.balance();
+        if (total > minutos_convertio.data.minutes_left) {
+            throw new common_1.ConflictException(`No se pueden aceptar las manillas, no hay suficientes minutos en convertio, minutos disponibles: ${minutos_convertio.data.minutes_left}`);
+        }
         const aceptadas = [];
         const errores = [];
         for (const id of ids) {

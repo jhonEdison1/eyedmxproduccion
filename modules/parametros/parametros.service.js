@@ -22,12 +22,21 @@ let ParametrosService = class ParametrosService {
         this.parametroModel = parametroModel;
     }
     async create(createParametroDto) {
-        const exist = await this.findOneByName(createParametroDto.nombre);
+        const exist = await this.existeParametro(createParametroDto.nombre);
         if (exist) {
             throw new common_1.ConflictException('ya existe un parametro con ese nombre');
         }
         const parametro = await new this.parametroModel(createParametroDto);
         return parametro.save();
+    }
+    async existeParametro(nombre) {
+        const parametro = await this.parametroModel.findOne({ nombre: nombre });
+        if (parametro) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     async findOneByName(nombre) {
         const parametro = await this.parametroModel.findOne({ nombre: nombre });

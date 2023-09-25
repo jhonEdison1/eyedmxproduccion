@@ -33,6 +33,7 @@ export declare class ParametrosService {
     create(createParametroDto: CreateParametroDto): Promise<import("mongoose").Document<unknown, {}, Parametro> & Parametro & {
         _id: import("mongoose").Types.ObjectId;
     }>;
+    existeParametro(nombre: string): Promise<boolean>;
     findOneByName(nombre: string): Promise<string>;
     findAll(params?: FilterParametroDto): Promise<{
         parametros: (import("mongoose").Document<unknown, {}, Parametro> & Parametro & {

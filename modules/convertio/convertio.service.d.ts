@@ -10,4 +10,5 @@ export declare class ConvertioService {
     newConversion(file: any): Promise<any>;
     getConversionData(id: any): Promise<any>;
     getConversionStatus(id: any): Promise<any>;
+    balance(): Promise<any>;
 }
