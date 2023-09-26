@@ -48,13 +48,19 @@ export declare class ManillasService {
     }>;
     solicitarVarias(createManillaDto: CreateManillaDto[], userId: string): Promise<any[]>;
     getTipoPorIdManilla(id: string): Promise<Tipos>;
+    uploadBase64ToS3(id: string, base64Data: string, field: string, extension: string): Promise<string>;
+    processAndUploadField(newRecord: Manilla, field: string, base64Data: string | undefined): Promise<void>;
+    processAndUploadUpdateField(newRecord: Manilla, field: string, base64Data: string | undefined): Promise<string>;
+    extractBase64DataAndExtension(base64Data: string): {
+        data: string;
+        extension: string;
+    };
     editManilla(id: string, editManillaDto: EditManillaDto, userId: string): Promise<{
         message: string;
         manillaEditada: import("mongoose").Document<unknown, {}, Manilla> & Manilla & {
             _id: Types.ObjectId;
         };
     }>;
-    uploadBase64ToS3(id: string, base64Data: string, field: string, extension: string): Promise<string>;
     changeEstadoPago(id: string): Promise<void>;
     findSolicitudes(params?: FilterManillaDto): Promise<{
         manillas: Omit<Omit<import("mongoose").Document<unknown, {}, Manilla> & Manilla & {

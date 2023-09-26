@@ -77,6 +77,9 @@ export declare class Manilla extends Document {
     nombre_mascota: string;
     fecha_nacimiento_mascota: Date;
     nombre_duenio: string;
+    deporte: string;
+    historia_clinica: string;
+    archivos: string;
 }
 export declare const ManillaSchema: import("mongoose").Schema<Manilla, import("mongoose").Model<Manilla, any, any, any, Document<unknown, any, Manilla> & Manilla & {
     _id: Types.ObjectId;

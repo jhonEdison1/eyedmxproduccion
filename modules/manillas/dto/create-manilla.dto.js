@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ManillaMascotaDto = exports.ManillaNiñoDto = exports.AtLeastOneIsRequired = exports.AtLeastOneIsRequiredConstraint = exports.ManillaAdulto_MayorDto = exports.ManillaMoteroDto = exports.CreateManillaDto = void 0;
+exports.ManillaDeportistaDto = exports.ManillaMascotaDto = exports.ManillaNiñoDto = exports.AtLeastOneIsRequired = exports.AtLeastOneIsRequiredConstraint = exports.ManillaAdulto_MayorDto = exports.ManillaMoteroDto = exports.CreateManillaDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class CreateManillaDto {
@@ -62,6 +62,14 @@ __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CreateManillaDto.prototype, "tenencias", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], CreateManillaDto.prototype, "historia_clinica", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], CreateManillaDto.prototype, "archivos", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
@@ -315,4 +323,55 @@ __decorate([
     __metadata("design:type", String)
 ], ManillaMascotaDto.prototype, "raza", void 0);
 exports.ManillaMascotaDto = ManillaMascotaDto;
+class ManillaDeportistaDto extends CreateManillaDto {
+}
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ManillaDeportistaDto.prototype, "nombre_portador", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ManillaDeportistaDto.prototype, "documento", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Date)
+], ManillaDeportistaDto.prototype, "fecha_nacimiento", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ManillaDeportistaDto.prototype, "genero", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ManillaDeportistaDto.prototype, "email", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ManillaDeportistaDto.prototype, "direccion", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ManillaDeportistaDto.prototype, "telefono", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ManillaDeportistaDto.prototype, "rh", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ManillaDeportistaDto.prototype, "alergias", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ManillaDeportistaDto.prototype, "deporte", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ManillaDeportistaDto.prototype, "compa\u00F1ia_de_seguros", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], ManillaDeportistaDto.prototype, "centro_de_salud", void 0);
+exports.ManillaDeportistaDto = ManillaDeportistaDto;
 //# sourceMappingURL=create-manilla.dto.js.map

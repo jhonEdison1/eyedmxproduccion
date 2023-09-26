@@ -197,6 +197,18 @@ __decorate([
     (0, mongoose_1.Prop)({ trim: true }),
     __metadata("design:type", String)
 ], Manilla.prototype, "nombre_duenio", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ trim: true }),
+    __metadata("design:type", String)
+], Manilla.prototype, "deporte", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ trim: true }),
+    __metadata("design:type", String)
+], Manilla.prototype, "historia_clinica", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ trim: true }),
+    __metadata("design:type", String)
+], Manilla.prototype, "archivos", void 0);
 Manilla = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], Manilla);

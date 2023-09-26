@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EditManillaMascotaDto = exports.EditManillaNiñoDto = exports.AtLeastOneIsRequired = exports.AtLeastOneIsRequiredConstraint = exports.EditManillaAdulto_MayorDto = exports.EditManillaMoteroDto = exports.EditManillaDto = exports.UpdateManillaDto = void 0;
+exports.EditManillaDeportistaDto = exports.EditManillaMascotaDto = exports.EditManillaNiñoDto = exports.AtLeastOneIsRequired = exports.AtLeastOneIsRequiredConstraint = exports.EditManillaAdulto_MayorDto = exports.EditManillaMoteroDto = exports.EditManillaDto = exports.UpdateManillaDto = void 0;
 const mapped_types_1 = require("@nestjs/mapped-types");
 const create_manilla_dto_1 = require("./create-manilla.dto");
 const manilla_entity_1 = require("../entities/manilla.entity");
@@ -45,6 +45,14 @@ __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], EditManillaDto.prototype, "tenencias", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], EditManillaDto.prototype, "historia_clinica", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], EditManillaDto.prototype, "archivos", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Object)
@@ -166,4 +174,27 @@ __decorate([
     __metadata("design:type", String)
 ], EditManillaMascotaDto.prototype, "centro_de_salud", void 0);
 exports.EditManillaMascotaDto = EditManillaMascotaDto;
+class EditManillaDeportistaDto extends EditManillaDto {
+}
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Date)
+], EditManillaDeportistaDto.prototype, "fecha_nacimiento", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], EditManillaDeportistaDto.prototype, "email", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], EditManillaDeportistaDto.prototype, "deporte", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], EditManillaDeportistaDto.prototype, "compa\u00F1ia_de_seguros", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], EditManillaDeportistaDto.prototype, "centro_de_salud", void 0);
+exports.EditManillaDeportistaDto = EditManillaDeportistaDto;
 //# sourceMappingURL=update-manilla.dto.js.map

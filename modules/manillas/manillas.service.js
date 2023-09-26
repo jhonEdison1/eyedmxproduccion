@@ -63,6 +63,9 @@ let ManillasService = class ManillasService {
             case authentication_common_service_1.Tipos.Mascota:
                 manilla = new create_manilla_dto_1.ManillaMascotaDto();
                 break;
+            case authentication_common_service_1.Tipos.Deportista:
+                manilla = new create_manilla_dto_1.ManillaDeportistaDto();
+                break;
             default:
                 throw new common_1.ConflictException('Tipo de pulsera no válido');
         }
@@ -74,132 +77,13 @@ let ManillasService = class ManillasService {
         const lastNumId = await this.findLastNumId();
         const newRecord = new this.manillaModel(manilla);
         newRecord.numid = lastNumId + 1;
-        if (createManillaDto.foto_portador) {
-            let dataD = createManillaDto.foto_portador;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else if (extension == 'image/png') {
-                dataD = dataD.replace('data:image/png;base64,', '');
-                extension = 'png';
-            }
-            else if (extension == 'image/jpeg') {
-                dataD = dataD.replace('data:image/jpeg;base64,', '');
-                extension = 'jpg';
-            }
-            else if (extension == 'image/jpg') {
-                dataD = dataD.replace('data:image/jpg;base64,', '');
-                extension = 'jpg';
-            }
-            newRecord.foto_portador = await this.uploadBase64ToS3(newRecord._id.toString(), dataD, 'foto_portador', extension);
-        }
-        if (createManillaDto.licencia) {
-            let dataD = createManillaDto.licencia;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else if (extension == 'image/png') {
-                dataD = dataD.replace('data:image/png;base64,', '');
-                extension = 'png';
-            }
-            else if (extension == 'image/jpeg') {
-                dataD = dataD.replace('data:image/jpeg;base64,', '');
-                extension = 'jpg';
-            }
-            else if (extension == 'image/jpg') {
-                dataD = dataD.replace('data:image/jpg;base64,', '');
-                extension = 'jpg';
-            }
-            newRecord.licencia = await this.uploadBase64ToS3(newRecord._id.toString(), dataD, 'licencia', extension);
-        }
-        if (createManillaDto.matricula_o_tarjeta) {
-            let dataD = createManillaDto.matricula_o_tarjeta;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else if (extension == 'image/png') {
-                dataD = dataD.replace('data:image/png;base64,', '');
-                extension = 'png';
-            }
-            else if (extension == 'image/jpeg') {
-                dataD = dataD.replace('data:image/jpeg;base64,', '');
-                extension = 'jpg';
-            }
-            else if (extension == 'image/jpg') {
-                dataD = dataD.replace('data:image/jpg;base64,', '');
-                extension = 'jpg';
-            }
-            newRecord.matricula_o_tarjeta = await this.uploadBase64ToS3(newRecord._id.toString(), dataD, 'matricula_o_tarjeta', extension);
-        }
-        if (createManillaDto.factura) {
-            let dataD = createManillaDto.factura;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else if (extension == 'image/png') {
-                dataD = dataD.replace('data:image/png;base64,', '');
-                extension = 'png';
-            }
-            else if (extension == 'image/jpeg') {
-                dataD = dataD.replace('data:image/jpeg;base64,', '');
-                extension = 'jpg';
-            }
-            else if (extension == 'image/jpg') {
-                dataD = dataD.replace('data:image/jpg;base64,', '');
-                extension = 'jpg';
-            }
-            newRecord.factura = await this.uploadBase64ToS3(newRecord._id.toString(), dataD, 'factura', extension);
-        }
-        if (createManillaDto.seguro) {
-            let dataD = createManillaDto.seguro;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else if (extension == 'image/png') {
-                dataD = dataD.replace('data:image/png;base64,', '');
-                extension = 'png';
-            }
-            else if (extension == 'image/jpeg') {
-                dataD = dataD.replace('data:image/jpeg;base64,', '');
-                extension = 'jpg';
-            }
-            else if (extension == 'image/jpg') {
-                dataD = dataD.replace('data:image/jpg;base64,', '');
-                extension = 'jpg';
-            }
-            newRecord.seguro = await this.uploadBase64ToS3(newRecord._id.toString(), dataD, 'seguro', extension);
-        }
-        if (createManillaDto.tenencias) {
-            let dataD = createManillaDto.tenencias;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else if (extension == 'image/png') {
-                dataD = dataD.replace('data:image/png;base64,', '');
-                extension = 'png';
-            }
-            else if (extension == 'image/jpeg') {
-                dataD = dataD.replace('data:image/jpeg;base64,', '');
-                extension = 'jpg';
-            }
-            else if (extension == 'image/jpg') {
-                dataD = dataD.replace('data:image/jpg;base64,', '');
-                extension = 'jpg';
-            }
-            newRecord.tenencias = await this.uploadBase64ToS3(newRecord._id.toString(), dataD, 'tenencias', extension);
-        }
+        await this.processAndUploadField(newRecord, 'foto_portador', createManillaDto.foto_portador);
+        await this.processAndUploadField(newRecord, 'licencia', createManillaDto.licencia);
+        await this.processAndUploadField(newRecord, 'matricula_o_tarjeta', createManillaDto.matricula_o_tarjeta);
+        await this.processAndUploadField(newRecord, 'factura', createManillaDto.factura);
+        await this.processAndUploadField(newRecord, 'seguro', createManillaDto.seguro);
+        await this.processAndUploadField(newRecord, 'tenencias', createManillaDto.tenencias);
+        await this.processAndUploadField(newRecord, 'historia_clinica', createManillaDto.historia_clinica);
         const newManilla = await newRecord.save();
         return newManilla;
     }
@@ -221,6 +105,46 @@ let ManillasService = class ManillasService {
         }
         return manilla.tipo;
     }
+    async uploadBase64ToS3(id, base64Data, field, extension) {
+        const buffer = Buffer.from(base64Data, 'base64');
+        const contentType = extension === 'pdf' ? 'application/pdf' : `image/${extension}`;
+        const fileName = `portador/${id}/${field}`;
+        const s3Params = {
+            Bucket: this.configSerivce.s3.bucket,
+            Key: `${fileName}.${extension}`,
+            Body: buffer,
+            ContentType: contentType,
+        };
+        try {
+            const uploadedObject = await this.s3.upload(s3Params).promise();
+            const urlarchivo = uploadedObject.Location;
+            return urlarchivo;
+        }
+        catch (error) {
+            throw new Error(`Error al subir la imagen a S3: ${error.message}`);
+        }
+    }
+    async processAndUploadField(newRecord, field, base64Data) {
+        if (base64Data) {
+            const { data, extension } = this.extractBase64DataAndExtension(base64Data);
+            newRecord[field] = await this.uploadBase64ToS3(newRecord._id.toString(), data, field, extension);
+        }
+    }
+    async processAndUploadUpdateField(newRecord, field, base64Data) {
+        if (base64Data) {
+            const { data, extension } = this.extractBase64DataAndExtension(base64Data);
+            const resultado = await this.uploadBase64ToS3(newRecord._id.toString(), data, field, extension);
+            return resultado;
+        }
+    }
+    extractBase64DataAndExtension(base64Data) {
+        const matches = base64Data.match(/^data:(image|application)\/(pdf|png|jpe?g);base64,(.+)$/i);
+        if (!matches || matches.length !== 4) {
+            throw new common_1.ConflictException('Formato de datos inválido');
+        }
+        const [, type, extension, data] = matches;
+        return { data, extension };
+    }
     async editManilla(id, editManillaDto, userId) {
         const manilla = await this.manillaModel.findById(id);
         if (!manilla) {
@@ -234,89 +158,36 @@ let ManillasService = class ManillasService {
             throw new common_1.ConflictException('Datos inválidos');
         }
         if (editManillaDto.foto_portador) {
-            let dataD = editManillaDto.foto_portador;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else {
-                dataD = dataD.replace(/^data:image\/\w+;base64,/, '');
-                extension = 'png';
-            }
-            const resultado = await this.uploadBase64ToS3(manilla._id.toString(), dataD, 'foto_portador', extension);
-            manilla.foto_portador = resultado;
-            editManillaDto.foto_portador = resultado;
+            manilla.foto_portador = await this.processAndUploadUpdateField(manilla, 'foto_portador', editManillaDto.foto_portador);
+            editManillaDto.foto_portador = manilla.foto_portador;
         }
         if (editManillaDto.licencia) {
-            let dataD = editManillaDto.licencia;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else {
-                dataD = dataD.replace(/^data:image\/\w+;base64,/, '');
-                extension = 'png';
-            }
-            manilla.licencia = await this.uploadBase64ToS3(manilla._id.toString(), dataD, 'licencia', extension);
+            manilla.licencia = await this.processAndUploadUpdateField(manilla, 'licencia', editManillaDto.licencia);
             editManillaDto.licencia = manilla.licencia;
         }
         if (editManillaDto.matricula_o_tarjeta) {
-            let dataD = editManillaDto.matricula_o_tarjeta;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else {
-                dataD = dataD.replace(/^data:image\/\w+;base64,/, '');
-                extension = 'png';
-            }
-            manilla.matricula_o_tarjeta = await this.uploadBase64ToS3(manilla._id.toString(), dataD, 'matricula_o_tarjeta', extension);
+            manilla.matricula_o_tarjeta = await this.processAndUploadUpdateField(manilla, 'matricula_o_tarjeta', editManillaDto.matricula_o_tarjeta);
             editManillaDto.matricula_o_tarjeta = manilla.matricula_o_tarjeta;
         }
         if (editManillaDto.factura) {
-            let dataD = editManillaDto.factura;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else {
-                dataD = dataD.replace(/^data:image\/\w+;base64,/, '');
-                extension = 'png';
-            }
-            manilla.factura = await this.uploadBase64ToS3(manilla._id.toString(), dataD, 'factura', extension);
+            manilla.factura = await this.processAndUploadUpdateField(manilla, 'factura', editManillaDto.factura);
             editManillaDto.factura = manilla.factura;
         }
         if (editManillaDto.seguro) {
-            let dataD = editManillaDto.seguro;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else {
-                dataD = dataD.replace(/^data:image\/\w+;base64,/, '');
-                extension = 'png';
-            }
-            manilla.seguro = await this.uploadBase64ToS3(manilla._id.toString(), dataD, 'seguro', extension);
+            manilla.seguro = await this.processAndUploadUpdateField(manilla, 'seguro', editManillaDto.seguro);
             editManillaDto.seguro = manilla.seguro;
         }
         if (editManillaDto.tenencias) {
-            let dataD = editManillaDto.tenencias;
-            let extension = dataD.substring("data:".length, dataD.indexOf(";base64"));
-            if (extension == 'application/pdf') {
-                dataD = dataD.replace('data:application/pdf;base64,', '');
-                extension = 'pdf';
-            }
-            else {
-                dataD = dataD.replace(/^data:image\/\w+;base64,/, '');
-                extension = 'png';
-            }
-            manilla.tenencias = await this.uploadBase64ToS3(manilla._id.toString(), dataD, 'tenencias', extension);
+            manilla.tenencias = await this.processAndUploadUpdateField(manilla, 'tenencias', editManillaDto.tenencias);
             editManillaDto.tenencias = manilla.tenencias;
+        }
+        if (editManillaDto.historia_clinica) {
+            manilla.historia_clinica = await this.processAndUploadUpdateField(manilla, 'historia_clinica', editManillaDto.historia_clinica);
+            editManillaDto.historia_clinica = manilla.historia_clinica;
+        }
+        if (editManillaDto.archivos) {
+            manilla.archivos = await this.processAndUploadUpdateField(manilla, 'archivos', editManillaDto.archivos);
+            editManillaDto.archivos = manilla.archivos;
         }
         Object.assign(manilla, editManillaDto);
         const manillaEditada = await this.manillaModel.findByIdAndUpdate(id, manilla, { new: true }).exec();
@@ -324,34 +195,6 @@ let ManillasService = class ManillasService {
             message: 'informacion editada satisfactoriamente',
             manillaEditada
         };
-    }
-    async uploadBase64ToS3(id, base64Data, field, extension) {
-        const buffer = Buffer.from(base64Data, 'base64');
-        let content = '';
-        if (extension == 'pdf') {
-            content = 'application/pdf';
-        }
-        else {
-            content = 'image' + '/' + extension;
-        }
-        const uploadFolderPath = 'portador';
-        const fileName = `portador/${id}/${field}`;
-        console.log(fileName, extension);
-        const s3Params = {
-            Bucket: this.configSerivce.s3.bucket,
-            Key: fileName + '.' + extension,
-            Body: buffer,
-            ContentType: content
-        };
-        try {
-            const uploadedObject = await this.s3.upload(s3Params).promise();
-            const urlfoto = uploadedObject.Location;
-            console.log('urlfoto', urlfoto);
-            return urlfoto;
-        }
-        catch (error) {
-            throw new Error(`Error al subir la imagen a S3: ${error.message}`);
-        }
     }
     async changeEstadoPago(id) {
         const manilla = await this.manillaModel.findById(id).exec();

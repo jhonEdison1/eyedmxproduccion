@@ -14,6 +14,8 @@ export declare class EditManillaDto {
     factura: string;
     seguro: string;
     tenencias: string;
+    historia_clinica: string;
+    archivos: string;
     otros: object;
 }
 export declare class EditManillaMoteroDto extends EditManillaDto {
@@ -79,5 +81,19 @@ export declare class EditManillaMascotaDto extends EditManillaDto {
     readonly centro_de_salud: string;
     readonly fecha_nacimiento_mascota: Date;
     readonly raza: string;
+}
+export declare class EditManillaDeportistaDto extends EditManillaDto {
+    readonly nombre_portador: string;
+    readonly documento: string;
+    readonly fecha_nacimiento: Date;
+    readonly genero: string;
+    readonly email: string;
+    readonly direccion: string;
+    readonly telefono: string;
+    readonly rh: string;
+    readonly alergias: string;
+    readonly deporte: string;
+    readonly compañia_de_seguros: string;
+    readonly centro_de_salud: string;
 }
 export {};

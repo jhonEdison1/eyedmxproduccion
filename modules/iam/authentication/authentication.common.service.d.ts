@@ -36,7 +36,8 @@ export declare enum Tipos {
     Motero = "Motociclista",
     Adulto_Mayor = "Adulto_Mayor",
     Niño = "Ni\u00F1o",
-    Mascota = "Mascota"
+    Mascota = "Mascota",
+    Deportista = "Deportista"
 }
 export declare class AuthenticationCommonService {
     private readonly configSerivce;

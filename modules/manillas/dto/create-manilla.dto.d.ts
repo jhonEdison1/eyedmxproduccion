@@ -11,6 +11,8 @@ export declare class CreateManillaDto {
     readonly factura: string;
     readonly seguro: string;
     readonly tenencias: string;
+    readonly historia_clinica: string;
+    readonly archivos: string;
     pagoId: string;
     otros: object;
 }
@@ -77,4 +79,18 @@ export declare class ManillaMascotaDto extends CreateManillaDto {
     readonly centro_de_salud: string;
     readonly fecha_nacimiento_mascota: Date;
     readonly raza: string;
+}
+export declare class ManillaDeportistaDto extends CreateManillaDto {
+    readonly nombre_portador: string;
+    readonly documento: string;
+    readonly fecha_nacimiento: Date;
+    readonly genero: string;
+    readonly email: string;
+    readonly direccion: string;
+    readonly telefono: string;
+    readonly rh: string;
+    readonly alergias: string;
+    readonly deporte: string;
+    readonly compañia_de_seguros: string;
+    readonly centro_de_salud: string;
 }
