@@ -16,6 +16,7 @@ const mongoose_1 = require("@nestjs/mongoose");
 const iam_module_1 = require("../iam/iam.module");
 const stripe_service_1 = require("./stripe.service");
 const manillas_module_1 = require("../manillas/manillas.module");
+const tipos_module_1 = require("../tipos/tipos.module");
 let PagosModule = class PagosModule {
 };
 PagosModule = __decorate([
@@ -24,7 +25,8 @@ PagosModule = __decorate([
             config_1.ConfigModule,
             mongoose_1.MongooseModule.forFeature([{ name: pago_entity_1.Pago.name, schema: pago_entity_1.PagoSchema }]),
             iam_module_1.IamModule,
-            manillas_module_1.ManillasModule
+            manillas_module_1.ManillasModule,
+            tipos_module_1.TiposModule
         ],
         controllers: [pagos_controller_1.PagosController],
         providers: [pagos_service_1.PagosService, stripe_service_1.StripeService],

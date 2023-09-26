@@ -27,6 +27,7 @@ import { CreateManillaDto } from './dto/create-manilla.dto';
 import { EditManillaDto, UpdateManillaDto } from './dto/update-manilla.dto';
 import { Manilla, estadoManilla } from './entities/manilla.entity';
 import { Model, Types } from 'mongoose';
+import { Tipos } from '../iam/authentication/authentication.common.service';
 import { FilterManillaDto } from './dto/filter-manilla.dto';
 import config from 'src/config';
 import { ConfigType } from '@nestjs/config';
@@ -46,6 +47,7 @@ export declare class ManillasService {
         _id: Types.ObjectId;
     }>;
     solicitarVarias(createManillaDto: CreateManillaDto[], userId: string): Promise<any[]>;
+    getTipoPorIdManilla(id: string): Promise<Tipos>;
     editManilla(id: string, editManillaDto: EditManillaDto, userId: string): Promise<{
         message: string;
         manillaEditada: import("mongoose").Document<unknown, {}, Manilla> & Manilla & {

@@ -35,6 +35,7 @@ export declare class TiposService {
     existByNombre(nombre: String): Promise<import("mongoose").Document<unknown, {}, Tipo> & Tipo & {
         _id: import("mongoose").Types.ObjectId;
     }>;
+    getPrecioPorTipo(nombre: String): Promise<number>;
     findAll(): Promise<(import("mongoose").Document<unknown, {}, Tipo> & Tipo & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;

@@ -214,6 +214,13 @@ let ManillasService = class ManillasService {
         }
         return manillas;
     }
+    async getTipoPorIdManilla(id) {
+        const manilla = await this.manillaModel.findById(id).exec();
+        if (!manilla) {
+            throw new common_1.ConflictException('No existe la manilla');
+        }
+        return manilla.tipo;
+    }
     async editManilla(id, editManillaDto, userId) {
         const manilla = await this.manillaModel.findById(id);
         if (!manilla) {

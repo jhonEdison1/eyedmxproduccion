@@ -245,12 +245,14 @@ import { EstadoPagoDto } from './dto/update-estado-pago.dto';
 import { ManillasService } from '../manillas/manillas.service';
 import { FilterPagoDto } from './dto/filter-pago.dto';
 import { OtrosPagoDto } from './dto/otros-pago.dto';
+import { TiposService } from '../tipos/tipos.service';
 export declare class PagosService {
     private readonly configSerivce;
     private readonly pagoModel;
     private readonly stripeService;
     private readonly manillasService;
-    constructor(configSerivce: ConfigType<typeof config>, pagoModel: Model<Pago>, stripeService: StripeService, manillasService: ManillasService);
+    private readonly tiposService;
+    constructor(configSerivce: ConfigType<typeof config>, pagoModel: Model<Pago>, stripeService: StripeService, manillasService: ManillasService, tiposService: TiposService);
     create(createPagoDto: CreatePagoDto): Promise<import("mongoose").Document<unknown, {}, Pago> & Pago & {
         _id: import("mongoose").Types.ObjectId;
     }>;

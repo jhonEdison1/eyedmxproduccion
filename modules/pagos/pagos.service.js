@@ -20,20 +20,32 @@ const pago_entity_1 = require("./entities/pago.entity");
 const mongoose_2 = require("mongoose");
 const stripe_service_1 = require("./stripe.service");
 const manillas_service_1 = require("../manillas/manillas.service");
+const tipos_service_1 = require("../tipos/tipos.service");
 let PagosService = class PagosService {
-    constructor(configSerivce, pagoModel, stripeService, manillasService) {
+    constructor(configSerivce, pagoModel, stripeService, manillasService, tiposService) {
         this.configSerivce = configSerivce;
         this.pagoModel = pagoModel;
         this.stripeService = stripeService;
         this.manillasService = manillasService;
+        this.tiposService = tiposService;
     }
     async create(createPagoDto) {
+        const tiposPorManilla = [];
+        const precioPorManilla = [];
         for (const manilla of createPagoDto.manillasId) {
             const existpagoByManilla = await this.findPagobyManilla(manilla);
             if (existpagoByManilla) {
                 throw new common_1.ConflictException('Ya existe un pago para esta manilla');
             }
+            let tipo = await this.manillasService.getTipoPorIdManilla(manilla);
+            tiposPorManilla.push(tipo);
         }
+        for (const tipo of tiposPorManilla) {
+            const precio = await this.tiposService.getPrecioPorTipo(tipo);
+            precioPorManilla.push(precio);
+        }
+        const monto = precioPorManilla.reduce((a, b) => a + b, 0);
+        createPagoDto.monto = monto;
         const nuevoPago = await new this.pagoModel(createPagoDto);
         await nuevoPago.save();
         for (const manilla of createPagoDto.manillasId) {
@@ -165,7 +177,8 @@ PagosService = __decorate([
     __param(1, (0, mongoose_1.InjectModel)(pago_entity_1.Pago.name)),
     __metadata("design:paramtypes", [void 0, mongoose_2.Model,
         stripe_service_1.StripeService,
-        manillas_service_1.ManillasService])
+        manillas_service_1.ManillasService,
+        tipos_service_1.TiposService])
 ], PagosService);
 exports.PagosService = PagosService;
 //# sourceMappingURL=pagos.service.js.map

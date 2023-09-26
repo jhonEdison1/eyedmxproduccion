@@ -33,6 +33,10 @@ let TiposService = class TiposService {
         const tipo = await this.tipoModel.findOne({ name: nombre });
         return tipo;
     }
+    async getPrecioPorTipo(nombre) {
+        const tipo = await this.tipoModel.findOne({ name: nombre });
+        return tipo.precio;
+    }
     async findAll() {
         const tipos = await this.tipoModel.find();
         return tipos;
